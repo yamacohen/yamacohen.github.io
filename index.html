@@ -561,24 +561,25 @@
       title: "DatWise Identity",
       tag: "branding",
       heading: "DatWise Identity",
-      images: [0,1,2,3,15,17,4,5,6,18,16,8,9,10,11,12,13].map(function(n){ return imgs("datwise", 19)[n]; }),
+      images: [0,1,2,3,17,4,5].map(function(n){ return imgs("datwise", 19)[n]; }).concat(["video:datwise"], [6,18,16,8,9,10,11,12,13].map(function(n){ return imgs("datwise", 19)[n]; })),
       imageGroups: [1,1,1,1,1,1,1,1,1,1,1,3,3],
       zoom: true,
       fullSrc: {"images/all/datwise_01.jpg": "images/all/datwise_full_01.webp", "images/all/datwise_02.jpg": "images/all/datwise_full_02.webp", "images/all/datwise_03.jpg": "images/all/datwise_full_03.webp", "images/all/datwise_05.jpg": "images/all/datwise_full_05.webp", "images/all/datwise_06.jpg": "images/all/datwise_full_06.webp", "images/all/datwise_07.jpg": "images/all/datwise_full_07.webp", "images/all/datwise_08.jpg": "images/all/datwise_full_08.webp", "images/all/datwise_09.jpg": "images/all/datwise_full_09.webp", "images/all/datwise_10.jpg": "images/all/datwise_full_10.webp", "images/all/datwise_11.jpg": "images/all/datwise_full_11.webp", "images/all/datwise_12.jpg": "images/all/datwise_full_12.webp", "images/all/datwise_13.jpg": "images/all/datwise_full_13.webp", "images/all/datwise_14.jpg": "images/all/datwise_full_14.webp", "images/all/datwise_17.jpg": "images/all/datwise_full_17.webp", "images/all/datwise_18.jpg": "images/all/datwise_full_18.webp"},
-      pair: [0,2,7,9],
+      pair: [0,2,6,7,9],
       scales: {'images/all/datwise_16.jpg': 0.8},
-      gapsTop: {'images/all/datwise_16.jpg': '2.2rem', 'images/all/datwise_15.jpg': '2.2rem'},
-      gapsBottom: {'images/all/datwise_16.jpg': '1.7rem', 'images/all/datwise_15.jpg': '1.7rem'},
+      gapsTop: {'images/all/datwise_16.jpg': '2.2rem'},
+      gapsBottom: {'images/all/datwise_16.jpg': '1.7rem'},
       portrait: false,
       desc: [
         "Brand Design for a SaaS platform managing safety, health, and environmental processes. I led the brand design process - from defining the visual language to designed marketing assets.",
         "<span class=\"mini-head\">The Challenge</span>Designing for experienced safety professionals - clarity first. A need to communicate reliability without visual clutter. Bridging between technical content and approachable design.",
         "<span class=\"mini-head\">The Approach</span>The brand language was built around balance: clear yet friendly, professional yet human. The goal was to bring a more modern, approachable feel to a traditionally conservative field - without losing trust.",
+        "<span class=\"mini-head\">Brand in Motion</span>The identity taken into motion: a year-in-review film wrapping up 2025. The year's numbers, new clients and team moments, animated with the DatWise type, colors and layout. Bold type and quick cuts turn company data into a story people want to watch.",
         "<span class=\"mini-head\">UI Illustration Series</span>To support the brand language, I designed a custom illustration series that simplifies complex features, alongside a set of illustrations highlighting the power of a newly launched AI capability.",
         "<span class=\"mini-head\">Greeting Cards</span>A series of greeting cards and everyday content designed for clients and employees, introducing a lighter, more playful tone that brings a young, positive atmosphere into a serious and meaningful field - without undermining its importance."
 ],
-      meta: "Branding \u00B7 Visual Identity \u00B7 Color System \u00B7 Logo \u00B7 UI Illustrations",
-      when: "2025 \u00B7 DatWise"
+      meta: "Branding \u00B7 Visual Identity \u00B7 Color System \u00B7 Logo \u00B7 UI Illustrations \u00B7 Motion",
+      when: "2025\u20132026 \u00B7 DatWise"
     },
     {
       id: "whatwillbe",
@@ -709,7 +710,7 @@
       var contactVal = '<a class="ad-link" href="mailto:Yam98cohen@gmail.com">Yam98cohen@gmail.com</a><a class="ad-link" style="margin-left:1.5rem" href="https://www.linkedin.com/in/yam-cohen-29a4ab319" target="_blank" rel="noopener">LinkedIn</a>';
       var items = [
         ['what I do', 'Brand identity, marketing design, illustration, typography, video editing, AI imagery, AI-assisted workflows.'],
-        ['tools', 'Figma, Illustrator, Photoshop, InDesign, Premiere Pro, CapCut, Jitter, Midjourney, Weave, Framer, v0, Shopify, Claude Code.'],
+        ['tools', 'Figma, Illustrator, Photoshop, InDesign, Premiere Pro, CapCut, Jitter, Midjourney, Weave, ElevenLabs, ChatGPT, Framer, v0, Shopify, Claude Code.'],
         ['education', 'B.Des in Visual Communication, Shenkar.'],
         ['contact', contactVal]
       ];
@@ -821,6 +822,9 @@
       }
       if (src === 'video:typo'){
         return '<button class="zoom vid wide" data-lb="images/typography/typo_video.mp4" data-gallery="typo" aria-label="Play: Experimental Typography video"><video muted loop playsinline preload="none" poster="images/typography/typo_video.jpg" src="images/typography/typo_video.mp4"></video></button>';
+      }
+      if (src === 'video:datwise'){
+        return '<button class="zoom vid wide" data-lb="images/datwise/datwise_year.mp4" data-gallery="datwise-video" aria-label="Play: DatWise Year in Review"><video muted loop playsinline preload="none" poster="images/datwise/datwise_year.jpg" src="images/datwise/datwise_year.mp4"></video></button>';
       }
       if (src === 'videos:max'){
         // the full ad takes a 2 x 2 block, four short scenes sit beside it

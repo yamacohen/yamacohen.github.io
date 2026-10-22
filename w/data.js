@@ -11,13 +11,13 @@ window.HIDDEN_PROJECT = {
       desc: [
         "Designing marketing assets for Masterschool and its two EdTech products, Maestro and MSIT. Working daily in Figma and Midjourney to create ad campaigns and student-facing materials, designing landing pages, homepage and login flows in Framer and v0, and prototyping agentic AI ad-generation workflows in Claude Code.",
         "<span class=\"mini-head\">MSIT performance ads</span>Marketing assets for the European market: performance ads in German.",
-        "<span class=\"mini-head\">This is Max</span>A short video campaign in German for career changers and unemployed people in Germany. Max got fired, then learns he can pick up AI skills, 100% funded, and start a new job. An AI-generated project, made with Midjourney and Weave.",
-        "<span class=\"mini-head\">MSIT landing pages</span>Landing pages built to support the full performance road, from the ad to the page to the eligibility check. One is a program landing page, the other is a competitor comparison page.",
+        "<span class=\"mini-head\">This is Max</span>A German video campaign for MSIT, made for people in Germany who lost their job or want a career change. Instead of listing program features, the ad tells one short, relatable story: Max gets fired, finds out he can learn AI skills fully funded, and starts a new job. One character the audience can see themselves in carries the full ad and its short scenes for social.<span style=\"display:block;margin-top:1rem\">Made with Midjourney · Weave · ChatGPT · ElevenLabs · CapCut</span>",
+        "<span class=\"mini-head\">MSIT landing pages</span>Landing pages built to support the full performance road, from the ad to the page to the eligibility check. One is a program landing page, the other is a competitor comparison page.<span style=\"display:block;margin-top:1rem\">Designed with Claude · Built in v0</span>",
         "<span class=\"mini-head\">Masterschool Fellowship</span>A welcome card, a poster and a landing page for the Masterschool Fellowship.",
         "<span class=\"mini-head\">Maestro performance ads</span>Marketing assets for the US market: scholarship ad campaigns for social.",
         "<span class=\"mini-head\">Student-facing</span>Milestone and lesson-completion moments, community events, and a lesson walkthrough, made for students inside the product."
       ],
-      meta: "Performance Ads \u00B7 Landing Pages \u00B7 Student-Facing \u00B7 Image Creation",
+      meta: "Performance Ads \u00B7 AI Video \u00B7 Landing Pages \u00B7 Student-Facing \u00B7 Image Creation",
       when: "Present \u00B7 Marketing Designer, Masterschool"
     };
 window.HIDDEN_LP_URLS = ['learn.joinmsit.de/ai-engineering-germany-bg-4', 'learn.joinmsit.de/best-alternative-to/neue-fische'];
