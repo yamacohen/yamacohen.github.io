@@ -51,7 +51,7 @@
     scrollbar-width:none;
   }
   .proj-nav::-webkit-scrollbar{display:none;}
-  @media (max-width:860px){ .proj-nav{justify-content:flex-start;gap:1rem 1.5rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.4rem;} .proj-nav button{align-items:flex-start;} }
+  @media (max-width:860px){ .proj-nav{justify-content:flex-start;gap:1rem 1.5rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.4rem;} }
 
   .proj-nav button{
     display:flex;
@@ -73,6 +73,20 @@
   .proj-nav button[data-id="about"]{align-items:flex-start;text-align:left;}
   .proj-nav button[data-id="about"] .t,
   .proj-nav button[data-id="about"] .tag{color:var(--ink);}
+  /* phone menu: name on the left, a "Projects" button on the right that opens the full list */
+  .menu-toggle{display:none;}
+  @media (max-width:860px){
+    .topbar{display:grid;grid-template-columns:1fr auto;align-items:center;}
+    .proj-nav{display:contents;}
+    .proj-nav button[data-id="about"]{order:0;}
+    .proj-nav button[data-id="about"] .tag{display:none;}
+    .menu-toggle{display:block;order:1;font-family:var(--label, var(--sans));font-size:var(--fs-s);color:var(--ink);padding:.6rem 0 .6rem 1rem;}
+    .topbar.menu-open .menu-toggle{color:var(--accent);}
+    .proj-nav button:not([data-id="about"]){display:none;order:2;grid-column:1 / -1;}
+    .topbar.menu-open .proj-nav button:not([data-id="about"]){display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;padding:.8rem 0;border-top:1px solid var(--line);}
+    .topbar.menu-open .proj-nav button[data-id="about"], .topbar.menu-open .menu-toggle{margin-bottom:.8rem;}
+    .proj-nav .t{color:var(--ink);}
+  }
   .proj-nav button:hover .t{color:var(--ink);}
   .proj-nav button.is-active .t{color:var(--accent);}
   .proj-nav button.is-active .tag{color:var(--accent);opacity:.6;}
@@ -135,6 +149,8 @@
     text-align:left;
     white-space:nowrap;
   }
+  /* on phones, spread the tags edge to edge like a justified block */
+  @media (max-width:860px){ .proj-meta{justify-content:space-between;} }
 
   .proj-divider{
     border:none;
@@ -381,6 +397,7 @@
   .ab-table.is-tiny .ab-row .lbl{padding-top:0;}
   .ab-table.is-tiny .ab-row.ab-hello .val{font-size:var(--fs-m);line-height:1.4;letter-spacing:-.005em;}
   .ab-table.is-tiny .ab-row.ab-hello{padding:1.4rem 0;}
+  .ab-row.ab-hello{border-top:none;}
   .ad-link{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;}
   .ad-link:hover{color:var(--accent);}
   .ab-table::before{content:'';position:absolute;top:0;bottom:0;left:299px;width:1px;background:var(--line);}
@@ -399,7 +416,10 @@
   .ac-card .cap span:last-child{white-space:nowrap;}
   .ac-card .cap span:last-child{color:var(--muted);}
   .ac-card:hover .cap span:first-child{color:var(--accent);}
-  @media (max-width:860px){ .ab-table::before{display:none;} .ab-row{grid-template-columns:1fr;gap:.4rem;} .ac-grid{grid-template-columns:1fr;gap:1.75rem;} }
+  @media (max-width:860px){ .ab-table::before{display:none;} .ab-row{grid-template-columns:1fr;gap:.4rem;} .ac-grid{grid-template-columns:1fr;gap:1.75rem;}
+    /* on phones, list the cards in the same order as the top menu */
+    .ac-card[data-go="masterschool"]{order:1;} .ac-card[data-go="papaya"]{order:2;} .ac-card[data-go="perrier"]{order:3;}
+    .ac-card[data-go="typography"]{order:4;} .ac-card[data-go="datwise"]{order:5;} .ac-card[data-go="whatwillbe"]{order:6;} }
 
   @media (max-width:860px){
     .proj-top > div:first-child,
@@ -441,6 +461,7 @@
 
 <div class="topbar">
   <nav class="proj-nav" id="projNav"></nav>
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="projNav">Projects</button>
 </div>
 
 <main class="content" id="content"></main>
@@ -505,8 +526,8 @@
       portrait: false,
       desc: [
         "During my internship at Papaya Global in the Brand and Marketing Design Team, I contributed to the Re-Master process by creating a new color palette based on their signature red, designing a series of illustrations for textual posts, and refreshing the visual style of performance banners.",
-        "A series of illustrations designed to bring humor and lightness to the world of finance. The style uses simple shapes and soft character design to make complex topics more approachable and easier to engage with.",
-        "Updated existing performance banners by adjusting the layout and adding color, while keeping the original structure.",
+        "<span class=\"mini-head\">Illustrations</span>A series of illustrations designed to bring humor and lightness to the world of finance. The style uses simple shapes and soft character design to make complex topics more approachable and easier to engage with.",
+        "<span class=\"mini-head\">Performance ads</span>Updated existing performance banners by adjusting the layout and adding color, while keeping the original structure.",
         "<span class=\"mini-head\">Color research</span>Colors that did not make it. Early palette explorations and Papaya red tested on different grounds, kept here as process."
 ],
       meta: "Branding \u00B7 Illustration \u00B7 Color System",
@@ -533,7 +554,7 @@
         "<span class=\"mini-head\">Mood board & Messaging</span>A mood board of everyday Tel Aviv, brand values that are casual, accessible and social, and a message built on three words: Pause, Refresh, Repeat.",
         "<span class=\"mini-head\">Visual Language Development</span>The visual language was designed specifically for social-media storytelling, built around themes of capturing the moment, taking a short pause, and returning to the small rituals that make us feel good. The system is anchored in a time-of-day color structure: a soft cream for morning, neon green for afternoon, and Perrier's classic deep green for evening.",
         "<span class=\"mini-head\">Shipping Box Experience</span>The shipping box invites people into three daily rituals with Perrier: a slow morning moment with journaling, incense, and Perrier Sparkling Water; an energizing afternoon break at the beach or gym, solo or with friends; and a fun nighttime session with drink-games and Maison Perrier.<span style=\"display:block;margin-top:1rem\">Morning Package // Notebook, postcard, pencils, incense, Perrier bottle // Morning Pause</span><span style=\"display:block;margin-top:.7rem\">Afternoon Experience Package // Sports bag, striped towel, Perrier bottle // Afternoon Refresh</span><span style=\"display:block;margin-top:.7rem\">Night Package // Cups, playing cards, dice, drinking-game postcards, Maison Perrier four-pack // Night Repeat</span>",
-        "Additionally, I designed custom merchandise and a shipping kit that invites the recipient to take a refreshing moment, alone or with friends and enjoy a sip of Perrier."
+        "<span class=\"mini-head\">Merchandise & Shipping Kit</span>Additionally, I designed custom merchandise and a shipping kit that invites the recipient to take a refreshing moment, alone or with friends and enjoy a sip of Perrier."
 ],
       meta: "Strategy \u00B7 Visual Identity \u00B7 Social Media \u00B7 Merch",
       when: "2025 \u00B7 Shenkar, Year 4"
@@ -573,8 +594,8 @@
         "Brand Design for a SaaS platform managing safety, health, and environmental processes. I led the brand design process - from defining the visual language to designed marketing assets.",
         "<span class=\"mini-head\">The Challenge</span>Designing for experienced safety professionals - clarity first. A need to communicate reliability without visual clutter. Bridging between technical content and approachable design.",
         "<span class=\"mini-head\">The Approach</span>The brand language was built around balance: clear yet friendly, professional yet human. The goal was to bring a more modern, approachable feel to a traditionally conservative field - without losing trust.",
-        "To support the brand language, I designed a custom illustration series that simplifies complex features, alongside a set of illustrations highlighting the power of a newly launched AI capability.",
-        "A series of greeting cards and everyday content designed for clients and employees, introducing a lighter, more playful tone that brings a young, positive atmosphere into a serious and meaningful field - without undermining its importance."
+        "<span class=\"mini-head\">UI Illustration Series</span>To support the brand language, I designed a custom illustration series that simplifies complex features, alongside a set of illustrations highlighting the power of a newly launched AI capability.",
+        "<span class=\"mini-head\">Greeting Cards</span>A series of greeting cards and everyday content designed for clients and employees, introducing a lighter, more playful tone that brings a young, positive atmosphere into a serious and meaningful field - without undermining its importance."
 ],
       meta: "Branding \u00B7 Visual Identity \u00B7 Color System \u00B7 Logo \u00B7 UI Illustrations",
       when: "2025 \u00B7 DatWise"
@@ -616,8 +637,21 @@
       tag.textContent = p.id === 'about' ? p.tag : ' [ ' + p.tag + ' ]';
       btn.appendChild(tag);
     }
-    btn.addEventListener('click', function(){ render(p.id); });
+    btn.addEventListener('click', function(){ setMenu(false); render(p.id); });
     nav.appendChild(btn);
+  });
+
+  /* phone menu open / close */
+  var menuToggle = document.getElementById('menuToggle');
+  function setMenu(open){
+    var bar = document.querySelector('.topbar');
+    if (!bar || !menuToggle) return;
+    bar.classList.toggle('menu-open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.textContent = open ? 'Close' : 'Projects';
+  }
+  if (menuToggle) menuToggle.addEventListener('click', function(){
+    setMenu(!document.querySelector('.topbar').classList.contains('menu-open'));
   });
 
   /* Papaya research board: a loose, draggable pile of colour explorations */
@@ -696,7 +730,7 @@
         ['education', 'B.Des in Visual Communication, Shenkar.'],
         ['contact', contactVal]
       ];
-      var helloText = "I'm Yam, a visual designer based in Tel Aviv." +
+      var helloText = "I'm Yam, a visual designer based in Tel&#8209;Aviv." +
         "<span style=\"display:block;margin-top:.8rem\">I love color, illustration, typography and video editing. I organize my closet by color, and still get excited every time something I've designed makes its way into the world.</span>";
       var rows = items.map(function(it){ return row(it[0], it[1]); }).join('');
       content.innerHTML = '<div class="about-wrap"><div class="ab-table is-tiny">' +
@@ -843,7 +877,7 @@
           }).join('') + '</div>';
       }
       if (src === 'images/masterschool/maestro_ads.webp'){
-        var MB = [[0, 0, 1080, 1350], [1105, 0, 2185, 1350], [2210, 0, 3290, 1350], [0, 1375, 1080, 2725], [1105, 1375, 2185, 2725], [2210, 1375, 3290, 2725], [0, 2750, 1080, 4100], [1105, 2750, 2185, 4100], [2210, 2750, 3290, 4100]], MK = [4, 12, 7, 5, 11, 2, 10, 9, 8], MW = 3290, MH = 4100;
+        var MB = [[0, 0, 1080, 1350], [1105, 0, 2185, 1350], [2210, 0, 3290, 1350], [0, 1375, 1080, 2725], [1105, 1375, 2185, 2725], [2210, 1375, 3290, 2725], [0, 2750, 1080, 4100], [1105, 2750, 2185, 4100], [2210, 2750, 3290, 4100]], MK = [2, 7, 8, 4, 5, 10, 9, 11, 12], MW = 3290, MH = 4100;
         return '<div class="hs-wrap"><img src="' + src + '" alt="Maestro performance ads">' + MB.map(function(b, n){
           return '<button class="hs" data-lb="images/masterschool/maestro_full_' + MK[n] + '.webp" data-mode="fit" data-gallery="maestro" aria-label="Open Maestro ad ' + (n + 1) + ' full size" style="left:' + (b[0] / MW * 100).toFixed(3) + '%;top:' + (b[1] / MH * 100).toFixed(3) + '%;width:' + ((b[2] - b[0]) / MW * 100).toFixed(3) + '%;height:' + ((b[3] - b[1]) / MH * 100).toFixed(3) + '%"></button>';
         }).join('') + '</div>';
@@ -1167,6 +1201,7 @@
   var setNav = function(hide){
     if (hide === navHidden || !topbarEl) return;
     navHidden = hide; topbarEl.classList.toggle('is-hidden', hide);
+    if (hide) setMenu(false);
     document.documentElement.style.setProperty('--navoff', hide ? topbarEl.offsetHeight + 'px' : '0px');
   };
   window.addEventListener('scroll', function(){
