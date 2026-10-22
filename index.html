@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="apple-touch-icon.png"></head><body>
 <title>Yam Cohen</title>
 <style>
   :root{
@@ -172,7 +172,7 @@
   .combo-top{position:relative;container-type:inline-size;--u:calc(100cqw / 1600);}
   .combo-top > img:first-child{display:block;width:100%;height:auto;}
   .combo-top .cf-layer{position:absolute;left:0;top:0;overflow:hidden;pointer-events:none;
-    -webkit-mask-image:url(images/masterschool/anim/card_mask.png);mask-image:url(images/masterschool/anim/card_mask.png);
+    -webkit-mask-image:url(w/anim/card_mask.png);mask-image:url(w/anim/card_mask.png);
     -webkit-mask-size:100% 100%;mask-size:100% 100%;}
   .combo-top .cf{position:absolute;height:auto;opacity:0;will-change:transform;}
   .combo-top .cf-layer.is-fired .cf{opacity:1;animation:cfshoot 1.9s both;}
@@ -398,12 +398,12 @@
   .ab-table.is-tiny .ab-row.ab-hello .val{font-size:var(--fs-m);line-height:1.4;letter-spacing:-.005em;}
   .ab-table.is-tiny .ab-row.ab-hello{padding:1.4rem 0;}
   .ab-row.ab-hello{border-top:none;}
+  @media (max-width:860px){ .ab-table.is-tiny .ab-row.ab-hello{padding-top:0;} }
   .ad-link{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;}
   .ad-link:hover{color:var(--accent);}
   .ab-table::before{content:'';position:absolute;top:0;bottom:0;left:299px;width:1px;background:var(--line);}
   .ab-row{display:grid;grid-template-columns:300px minmax(0,800px);gap:1.25rem;border-top:1px solid var(--line);padding:1.1rem 0;}
   .ab-row .lbl{font-size:var(--fs-s);color:var(--muted);padding-top:.5em;}
-  .ab-row .lbl::first-letter{text-transform:uppercase;}
   .ab-row .val{font-size:calc(var(--fs-m) * var(--val-scale, 1));line-height:1.45;color:var(--ink);}
   .ac-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.25rem 8px;margin-top:.15rem;align-items:start;}
   .ac-card{display:block;border:0;background:none;padding:0;text-align:left;cursor:pointer;font:inherit;color:inherit;}
@@ -418,7 +418,7 @@
   .ac-card:hover .cap span:first-child{color:var(--accent);}
   @media (max-width:860px){ .ab-table::before{display:none;} .ab-row{grid-template-columns:1fr;gap:.4rem;} .ac-grid{grid-template-columns:1fr;gap:1.75rem;}
     /* on phones, list the cards in the same order as the top menu */
-    .ac-card[data-go="masterschool"]{order:1;} .ac-card[data-go="papaya"]{order:2;} .ac-card[data-go="perrier"]{order:3;}
+    .ac-card[data-go="edu"]{order:1;} .ac-card[data-go="papaya"]{order:2;} .ac-card[data-go="perrier"]{order:3;}
     .ac-card[data-go="typography"]{order:4;} .ac-card[data-go="datwise"]{order:5;} .ac-card[data-go="whatwillbe"]{order:6;} }
 
   @media (max-width:860px){
@@ -466,6 +466,7 @@
 
 <main class="content" id="content"></main>
 
+<script src="w/data.js"></script>
 <script>
 (function(){
 
@@ -483,27 +484,6 @@
       id: "about",
       title: "Yam Cohen",
       tag: "about"
-    },
-    {
-      id: "masterschool",
-      title: "Masterschool",
-      tag: "marketing",
-      heading: "Masterschool",
-      images: ["images/masterschool/msit_1.webp", "images/masterschool/msit_2.webp", "images/masterschool/msit_3.webp", "images/masterschool/msit_4.webp", "images/masterschool/msit_5.webp", "images/masterschool/msit_6.webp", "videos:max", "lp:block", "images/masterschool/fellowship.webp", "images/masterschool/maestro_ads.webp", "combo:student"],
-      imageGroups: [3,3,1,1,1,1,1],
-      pair: [-2,1,2,3,4,5],
-      portrait: false,
-      desc: [
-        "Designing marketing assets for Masterschool and its two EdTech products, Maestro and MSIT. Working daily in Figma and Midjourney to create ad campaigns and student-facing materials, designing landing pages, homepage and login flows in Framer and v0, and prototyping agentic AI ad-generation workflows in Claude Code.",
-        "<span class=\"mini-head\">MSIT performance ads</span>Marketing assets for the European market: performance ads in German.",
-        "<span class=\"mini-head\">This is Max</span>A short video campaign in German for career changers and unemployed people in Germany. Max got fired, then learns he can pick up AI skills, 100% funded, and start a new job. An AI-generated project, made with Midjourney and Weave.",
-        "<span class=\"mini-head\">MSIT landing pages</span>Landing pages built to support the full performance road, from the ad to the page to the eligibility check. One is a program landing page, the other is a competitor comparison page.",
-        "<span class=\"mini-head\">Masterschool Fellowship</span>A welcome card, a poster and a landing page for the Masterschool Fellowship.",
-        "<span class=\"mini-head\">Maestro performance ads</span>Marketing assets for the US market: scholarship ad campaigns for social.",
-        "<span class=\"mini-head\">Student-facing</span>Milestone and lesson-completion moments, community events, and a lesson walkthrough, made for students inside the product."
-      ],
-      meta: "Performance Ads \u00B7 Landing Pages \u00B7 Student-Facing \u00B7 Image Creation",
-      when: "Present \u00B7 Marketing Designer, Masterschool"
     },
     {
       id: "papaya",
@@ -620,6 +600,8 @@
       when: "2025 \u00B7 Shenkar, Year 4"
     }
   ];
+  /* one project lives in w/data.js, which search engines are told to skip (robots.txt) */
+  if (window.HIDDEN_PROJECT) PROJECTS.splice(1, 0, window.HIDDEN_PROJECT);
 
   var nav = document.getElementById('projNav');
   var content = document.getElementById('content');
@@ -713,17 +695,18 @@
 
     if (p.id === 'about'){
       var coverOf = function(id){ var q = PROJECTS.filter(function(x){ return x.id === id; })[0]; return q; };
-      var COVERS = [['masterschool', 'images/covers/masterschool_mix.webp'], ['papaya', 'images/covers/papaya_illustrations.webp'], ['datwise', 'images/covers/datwise_charcoal.webp'],
+      var COVERS = [['edu', 'w/cover_mix.webp'], ['papaya', 'images/covers/papaya_cover.webp'], ['datwise', 'images/covers/datwise_charcoal.webp'],
             ['whatwillbe', 'images/all/whatwillbe_00.gif'], ['perrier', 'images/covers/perrier_moments.webp'], ['typography', 'images/covers/typography_silhouette.jpg']];
+      COVERS = COVERS.filter(function(c){ return coverOf(c[0]); });
       var tagOf = function(id){ var q = coverOf(id); return q ? q.tag : ''; };
       var titleOf = function(id){ var q = coverOf(id); return q ? q.title : ''; };
-      var row = function(label, val, cls){ return '<div class="ab-row' + (cls ? ' ' + cls : '') + '"><div class="lbl">' + label + '</div><div class="val">' + val + '</div></div>'; };
+      var row = function(label, val, cls){ return '<div class="ab-row' + (cls ? ' ' + cls : '') + '"><div class="lbl">' + label.charAt(0).toUpperCase() + label.slice(1) + '</div><div class="val">' + val + '</div></div>'; };
       var card = function(c){
         return '<button class="ac-card' + (c[0] === 'papaya' ? ' tint' : '') + '" data-go="' + c[0] + '"><div class="ph"><img src="' + c[1] + '" alt=""' + (c[2] ? ' style="object-position:' + c[2] + '"' : '') + '></div>' +
           '<div class="cap"><span>' + titleOf(c[0]) + '</span><span>[ ' + tagOf(c[0]) + ' ]</span></div></button>';
       };
       var workGrid = '<div class="ac-grid">' + COVERS.map(card).join('') + '</div>';
-      var contactVal = '<a class="ad-link" href="mailto:Yam98cohen@gmail.com">Yam98cohen@gmail.com</a><a class="ad-link" style="margin-left:1.5rem" href="http://www.linkedin.com/in/yam-cohen-29a4ab319" target="_blank" rel="noopener">LinkedIn</a>';
+      var contactVal = '<a class="ad-link" href="mailto:Yam98cohen@gmail.com">Yam98cohen@gmail.com</a><a class="ad-link" style="margin-left:1.5rem" href="https://www.linkedin.com/in/yam-cohen-29a4ab319" target="_blank" rel="noopener">LinkedIn</a>';
       var items = [
         ['what I do', 'Brand identity, marketing design, illustration, typography, video editing, AI imagery, AI-assisted workflows.'],
         ['tools', 'Figma, Illustrator, Photoshop, InDesign, Premiere Pro, CapCut, Midjourney, Weave, Framer, v0, Shopify, Claude Code.'],
@@ -770,51 +753,52 @@
     }
 
     function lpHtml(){
-      var D = 'images/masterschool/lp/';
-      var z = function(f){ return '<button class="zoom" data-lb="' + D + f + '.webp" data-mode="fit" data-gallery="msit-lp" aria-label="Open landing page section full size"><img src="' + D + f + '.webp" alt="MSIT landing page section"></button>'; };
+      var LPU = window.HIDDEN_LP_URLS || [];
+      var D = 'w/lp/';
+      var z = function(f){ return '<button class="zoom" data-lb="' + D + f + '.webp" data-mode="fit" data-gallery="lp-a" aria-label="Open landing page section full size"><img src="' + D + f + '.webp" alt="Landing page section"></button>'; };
       var frame = function(url, imgs){ return '<div class="lp-frame"><div class="lp-bar"><i></i><i></i><i></i><span>' + url + '</span></div><div class="lp-scroll">' + imgs.map(z).join('') + '</div></div>'; };
       return '<div class="lp-block"><div class="lp-c">' +
-        frame('learn.joinmsit.de/ai-engineering-germany-bg-4', ['lp1_hero', 'lp1_calc', 'lp1_steps', 'lp1_faq']) +
-        frame('learn.joinmsit.de/best-alternative-to/neue-fische', ['lp2_hero', 'lp2_table', 'lp2_faq']) + '</div></div>';
+        frame(LPU[0] || '', ['lp1_hero', 'lp1_calc', 'lp1_steps', 'lp1_faq']) +
+        frame(LPU[1] || '', ['lp2_hero', 'lp2_table', 'lp2_faq']) + '</div></div>';
     }
 
     function studentTopHtml(){
       var TW = 1600, TH = 1744;
       var L = [[0,238,116,107,131,0],[1,342,116,107,131,0],[2,446,116,107,131,0],[3,996,136,107,133,1],[4,1100,136,107,133,1],[5,1202,136,109,133,1],[6,1306,136,109,133,1],[7,186,554,107,133,2],[8,290,554,107,133,2],[9,394,554,107,133,2],[10,498,554,107,133,2]];
       var pc = function(v, t){ return (v / t * 100).toFixed(3) + '%'; };
-      var out = '<div class="combo-top"><img src="images/masterschool/anim/base.webp" alt="Maestro student-facing designs">';
+      var out = '<div class="combo-top"><img src="w/anim/base.webp" alt="Student-facing designs">';
       var CF = [[0, 529, 10, 39, 46], [1, 121, 16, 37, 37], [2, 180, 16, 40, 40], [3, 13, 30, 24, 23], [4, 319, 34, 23, 24], [5, 33, 48, 26, 26], [6, 362, 53, 26, 26], [7, 176, 59, 26, 26], [8, 674, 65, 36, 36], [9, 81, 127, 24, 24], [10, 44, 153, 41, 60], [11, 667, 159, 23, 24], [12, 95, 169, 24, 23], [13, 653, 201, 23, 23], [14, 695, 220, 27, 25], [15, 147, 230, 25, 26], [16, 599, 262, 26, 26], [17, 79, 283, 25, 24], [18, 703, 292, 39, 40], [19, 138, 314, 26, 26], [20, 667, 315, 25, 24], [21, 304, 327, 40, 39], [22, 583, 346, 50, 51]];
       out += '<div class="cf-layer fire-on-view" style="width:' + pc(792, TW) + ';height:' + pc(400, TH) + '">';
       CF.forEach(function(c, n){
         var rot = ((n % 3) ? 1 : -1) * ((n % 2) ? 360 : 720);
         var ox = c[1] + c[3] / 2 - 396, oy = c[2] + c[4] / 2 - 200;
-        out += '<img class="cf" alt="" src="images/masterschool/anim/c' + c[0] + '.webp" style="left:' + (c[1] / 792 * 100).toFixed(3) + '%;top:' + (c[2] / 400 * 100).toFixed(3) + '%;width:' + (c[3] / 792 * 100).toFixed(3) + '%;' +
+        out += '<img class="cf" alt="" src="w/anim/c' + c[0] + '.webp" style="left:' + (c[1] / 792 * 100).toFixed(3) + '%;top:' + (c[2] / 400 * 100).toFixed(3) + '%;width:' + (c[3] / 792 * 100).toFixed(3) + '%;' +
           '--ox:' + ox.toFixed(0) + ';--oy:' + oy.toFixed(0) + ';--rot:' + rot + 'deg;animation-delay:' + ((n * 13 % 10) / 100 * 1.6).toFixed(2) + 's">';
       });
       out += '</div>';
       var seen = {0: 0, 1: 0, 2: 0};
       L.forEach(function(a){
         var g = a[5], k = seen[g]++;
-        out += '<img class="flipper g' + g + '" alt="" src="images/masterschool/anim/l' + a[0] + '.webp" style="left:' + pc(a[1], TW) + ';top:' + pc(a[2], TH) + ';width:' + pc(a[3], TW) + ';animation-delay:' + (g * -2 + k * .14).toFixed(2) + 's">';
+        out += '<img class="flipper g' + g + '" alt="" src="w/anim/l' + a[0] + '.webp" style="left:' + pc(a[1], TW) + ';top:' + pc(a[2], TH) + ';width:' + pc(a[3], TW) + ';animation-delay:' + (g * -2 + k * .14).toFixed(2) + 's">';
       });
       // purple wave: vertical strips, neighbours slide in opposite directions
       out += '<div class="pat pat-blue" style="left:0;top:' + pc(832, TH) + ';width:' + pc(792, TW) + ';height:' + pc(400, TH) + '">';
       for (var si = 0; si < 10; si++){
         // strips follow the pattern's own columns (their flat edges sit at x = 31 + 90n), so no half circle is ever cut
         var sl = -59 + 90 * si;
-        out += '<div class="strip ' + (si % 2 ? 'dn' : 'up') + '" style="left:' + (sl / 792 * 100).toFixed(3) + '%;width:' + (90 / 792 * 100).toFixed(3) + '%"><div class="slide"><img alt="" src="images/masterschool/anim/pat_blue_tall.png" style="left:' + (-(sl + 180) / 90 * 100).toFixed(3) + '%"></div></div>';
+        out += '<div class="strip ' + (si % 2 ? 'dn' : 'up') + '" style="left:' + (sl / 792 * 100).toFixed(3) + '%;width:' + (90 / 792 * 100).toFixed(3) + '%"><div class="slide"><img alt="" src="w/anim/pat_blue_tall.png" style="left:' + (-(sl + 180) / 90 * 100).toFixed(3) + '%"></div></div>';
       }
       out += '</div>';
       // orange circles fill the grid from the top left, one diagonal after another
-      out += '<div class="pat pat-orange fire-on-view" style="left:' + pc(808, TW) + ';top:' + pc(1352, TH) + ';width:' + pc(792, TW) + ';height:' + pc(392, TH) + '"><img class="plate" alt="" src="images/masterschool/anim/orange_plate.webp">';
+      out += '<div class="pat pat-orange fire-on-view" style="left:' + pc(808, TW) + ';top:' + pc(1352, TH) + ';width:' + pc(792, TW) + ';height:' + pc(392, TH) + '"><img class="plate" alt="" src="w/anim/orange_plate.webp">';
       var OC = [[-1, -1, -58, -76], [0, -1, 32, -76], [1, -1, 122, -76], [2, -1, 212, -76], [3, -1, 302, -76], [4, -1, 392, -76], [5, -1, 482, -76], [6, -1, 572, -76], [7, -1, 662, -76], [8, -1, 752, -76], [9, -1, 842, -76], [-1, 0, -58, 14], [0, 0, 32, 14], [1, 0, 122, 14], [2, 0, 212, 14], [3, 0, 302, 14], [4, 0, 392, 14], [5, 0, 482, 14], [6, 0, 572, 14], [7, 0, 662, 14], [8, 0, 752, 14], [9, 0, 842, 14], [-1, 1, -58, 104], [0, 1, 32, 104], [1, 1, 122, 104], [2, 1, 212, 104], [3, 1, 302, 104], [4, 1, 392, 104], [5, 1, 482, 104], [6, 1, 572, 104], [7, 1, 662, 104], [8, 1, 752, 104], [9, 1, 842, 104], [-1, 2, -58, 194], [0, 2, 32, 194], [1, 2, 122, 194], [2, 2, 212, 194], [3, 2, 302, 194], [4, 2, 392, 194], [5, 2, 482, 194], [6, 2, 572, 194], [7, 2, 662, 194], [8, 2, 752, 194], [9, 2, 842, 194], [-1, 3, -58, 284], [0, 3, 32, 284], [1, 3, 122, 284], [2, 3, 212, 284], [3, 3, 302, 284], [4, 3, 392, 284], [5, 3, 482, 284], [6, 3, 572, 284], [7, 3, 662, 284], [8, 3, 752, 284], [9, 3, 842, 284], [-1, 4, -58, 374], [0, 4, 32, 374], [1, 4, 122, 374], [2, 4, 212, 374], [3, 4, 302, 374], [4, 4, 392, 374], [5, 4, 482, 374], [6, 4, 572, 374], [7, 4, 662, 374], [8, 4, 752, 374], [9, 4, 842, 374], [-1, 5, -58, 464], [0, 5, 32, 464], [1, 5, 122, 464], [2, 5, 212, 464], [3, 5, 302, 464], [4, 5, 392, 464], [5, 5, 482, 464], [6, 5, 572, 464], [7, 5, 662, 464], [8, 5, 752, 464], [9, 5, 842, 464]];
       OC.forEach(function(c){
-        out += '<img class="oc" alt="" src="images/masterschool/anim/circle.png" style="left:' + ((c[2] - 60) / 792 * 100).toFixed(3) + '%;top:' + ((c[3] - 60) / 392 * 100).toFixed(3) + '%;width:' + (120 / 792 * 100).toFixed(3) + '%;animation-delay:' + ((c[0] + c[1] + 2) * 0.1).toFixed(2) + 's">';
+        out += '<img class="oc" alt="" src="w/anim/circle.png" style="left:' + ((c[2] - 60) / 792 * 100).toFixed(3) + '%;top:' + ((c[3] - 60) / 392 * 100).toFixed(3) + '%;width:' + (120 / 792 * 100).toFixed(3) + '%;animation-delay:' + ((c[0] + c[1] + 2) * 0.1).toFixed(2) + 's">';
       });
       out += '</div>';
       // each tile opens its full-size version
       [[0,0,792,400],[808,0,792,400],[0,416,792,400],[808,416,792,496],[0,832,792,400],[808,928,792,400],[0,1256,792,488],[808,1352,792,392]].forEach(function(t, n){
-        out += '<button class="hs" data-lb="images/masterschool/student_full_' + (n + 1) + '.webp" data-mode="fit" data-gallery="student" aria-label="Open tile ' + (n + 1) + ' full size" style="left:' + pc(t[0], TW) + ';top:' + pc(t[1], TH) + ';width:' + pc(t[2], TW) + ';height:' + pc(t[3], TH) + '"></button>';
+        out += '<button class="hs" data-lb="w/student_full_' + (n + 1) + '.webp" data-mode="fit" data-gallery="student" aria-label="Open tile ' + (n + 1) + ' full size" style="left:' + pc(t[0], TW) + ';top:' + pc(t[1], TH) + ';width:' + pc(t[2], TW) + ';height:' + pc(t[3], TH) + '"></button>';
       });
       return out + '</div>';
     }
@@ -840,7 +824,7 @@
       }
       if (src === 'videos:max'){
         // the full ad takes a 2 x 2 block, four short scenes sit beside it
-        var M = 'images/masterschool/max/';
+        var M = 'w/max/';
         var scenes = [['max_3', 'The full ad', ' big'], ['s_unemployed', 'Unemployed', ''], ['s_mom', 'Wifi', ''], ['s_thumbs', 'Thumbs up', ''], ['s_learning', 'Learning', '']];
         return '<div class="vid-row">' + scenes.map(function(q){
           return '<button class="zoom vid' + q[2] + '" data-lb="' + M + q[0] + '.mp4" data-gallery="max" aria-label="Play: ' + q[1] + '"><video muted loop playsinline preload="none" poster="' + M + q[0] + '.jpg" src="' + M + q[0] + '.mp4"></video></button>';
@@ -861,34 +845,34 @@
         return '<div class="combo">' +
           studentTopHtml() +
           '<div class="anim-row">' +
-            [['pyramid', 10], ['ripple', 11], ['inactive', 9]].map(function(n){ return '<button class="zoom" data-lb="images/masterschool/student_full_' + n[1] + '.webp" data-mode="fit" data-gallery="student" aria-label="Open progress tile full size"><img src="images/masterschool/stat_seq_' + n[0] + '.webp" alt="Maestro progress states, animated"></button>'; }).join('') +
+            [['pyramid', 10], ['ripple', 11], ['inactive', 9]].map(function(n){ return '<button class="zoom" data-lb="w/student_full_' + n[1] + '.webp" data-mode="fit" data-gallery="student" aria-label="Open progress tile full size"><img src="w/stat_seq_' + n[0] + '.webp" alt="Progress states, animated"></button>'; }).join('') +
           '</div></div>';
       }
-      if (src === 'images/masterschool/fellowship.webp'){
+      if (src === 'w/fellowship.webp'){
         var FW = 1600, FH = 2034;
         var spots = [
-          [120, 208, 664, 688, 'images/masterschool/fellowship_cards.webp', 'fit', 'Welcome card'],
-          [856, 168, 624, 1696, 'images/masterschool/fellowship_landing.webp', 'scroll', 'Landing page'],
-          [168, 968, 616, 776, 'images/masterschool/fellowship_poster.webp', 'fit', 'Poster']
+          [120, 208, 664, 688, 'w/fellowship_cards.webp', 'fit', 'Welcome card'],
+          [856, 168, 624, 1696, 'w/fellowship_landing.webp', 'scroll', 'Landing page'],
+          [168, 968, 616, 776, 'w/fellowship_poster.webp', 'fit', 'Poster']
         ];
-        return '<div class="hs-wrap"><img src="' + src + '" alt="Masterschool Fellowship: welcome card, landing page and poster">' +
+        return '<div class="hs-wrap"><img src="' + src + '" alt="Fellowship: welcome card, landing page and poster">' +
           spots.map(function(h){
             return '<button class="hs" data-lb="' + h[4] + '" data-mode="' + h[5] + '" aria-label="Open close-up: ' + h[6] + '" style="left:' + (h[0] / FW * 100).toFixed(3) + '%;top:' + (h[1] / FH * 100).toFixed(3) + '%;width:' + (h[2] / FW * 100).toFixed(3) + '%;height:' + (h[3] / FH * 100).toFixed(3) + '%"></button>';
           }).join('') + '</div>';
       }
-      if (src === 'images/masterschool/maestro_ads.webp'){
+      if (src === 'w/ads_b.webp'){
         var MB = [[0, 0, 1080, 1350], [1105, 0, 2185, 1350], [2210, 0, 3290, 1350], [0, 1375, 1080, 2725], [1105, 1375, 2185, 2725], [2210, 1375, 3290, 2725], [0, 2750, 1080, 4100], [1105, 2750, 2185, 4100], [2210, 2750, 3290, 4100]], MK = [2, 7, 8, 4, 5, 10, 9, 11, 12], MW = 3290, MH = 4100;
-        return '<div class="hs-wrap"><img src="' + src + '" alt="Maestro performance ads">' + MB.map(function(b, n){
-          return '<button class="hs" data-lb="images/masterschool/maestro_full_' + MK[n] + '.webp" data-mode="fit" data-gallery="maestro" aria-label="Open Maestro ad ' + (n + 1) + ' full size" style="left:' + (b[0] / MW * 100).toFixed(3) + '%;top:' + (b[1] / MH * 100).toFixed(3) + '%;width:' + ((b[2] - b[0]) / MW * 100).toFixed(3) + '%;height:' + ((b[3] - b[1]) / MH * 100).toFixed(3) + '%"></button>';
+        return '<div class="hs-wrap"><img src="' + src + '" alt="Performance ads">' + MB.map(function(b, n){
+          return '<button class="hs" data-lb="w/ads_b_full_' + MK[n] + '.webp" data-mode="fit" data-gallery="ads-b" aria-label="Open ad ' + (n + 1) + ' full size" style="left:' + (b[0] / MW * 100).toFixed(3) + '%;top:' + (b[1] / MH * 100).toFixed(3) + '%;width:' + ((b[2] - b[0]) / MW * 100).toFixed(3) + '%;height:' + ((b[3] - b[1]) / MH * 100).toFixed(3) + '%"></button>';
         }).join('') + '</div>';
       }
-      var lm = /^images\/masterschool\/lp\/(lp\d_\w+)\.webp$/.exec(src);
+      var lm = /^w\/lp\/(lp\d_\w+)\.webp$/.exec(src);
       if (lm){
-        return '<button class="zoom" data-lb="' + src + '" data-mode="fit" data-gallery="msit-lp" aria-label="Open landing page section full size"><img src="' + src + '" alt="MSIT landing page section"></button>';
+        return '<button class="zoom" data-lb="' + src + '" data-mode="fit" data-gallery="lp-a" aria-label="Open landing page section full size"><img src="' + src + '" alt="Landing page section"></button>';
       }
-      var mm = /^images\/masterschool\/msit_(\d)\.webp$/.exec(src);
+      var mm = /^w\/ads_a_(\d)\.webp$/.exec(src);
       if (mm){
-        return '<button class="zoom" data-lb="images/masterschool/msit_full_' + mm[1] + '.webp" data-mode="fit" data-gallery="msit" aria-label="Open ad ' + mm[1] + ' full size"><img src="' + src + '" alt="MSIT performance ad ' + mm[1] + '"></button>';
+        return '<button class="zoom" data-lb="w/ads_a_full_' + mm[1] + '.webp" data-mode="fit" data-gallery="ads-a" aria-label="Open ad ' + mm[1] + ' full size"><img src="' + src + '" alt="Performance ad ' + mm[1] + '"></button>';
       }
       if (src.indexOf('ph:') === 0) return '<div class="img-ph"><span>' + src.slice(3) + '</span></div>';
       if (src === 'marks') return marksHtml();
@@ -1008,7 +992,7 @@
       Array.prototype.forEach.call(inlineVids, function(v){ if (vidObs) vidObs.observe(v); else { var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } });
     }
 
-    var NEXTCOVER = {masterschool: 'images/covers/masterschool_mix.webp', papaya: 'images/covers/papaya_illustrations.webp', perrier: 'images/covers/perrier_moments.webp', typography: 'images/covers/typography_silhouette.jpg', datwise: 'images/covers/datwise_charcoal.webp', whatwillbe: 'images/all/whatwillbe_00.gif'};
+    var NEXTCOVER = {edu: 'w/cover_mix.webp', papaya: 'images/covers/papaya_cover.webp', perrier: 'images/covers/perrier_moments.webp', typography: 'images/covers/typography_silhouette.jpg', datwise: 'images/covers/datwise_charcoal.webp', whatwillbe: 'images/all/whatwillbe_00.gif'};
     var pi = PROJECTS.map(function(x){ return x.id; }).indexOf(p.id);
     var nx = PROJECTS[(pi + 1) % PROJECTS.length];
     var npEl = document.createElement('div'); npEl.className = 'next-proj';
