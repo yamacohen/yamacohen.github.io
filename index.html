@@ -73,6 +73,11 @@
   .proj-nav button[data-id="about"]{align-items:center;text-align:center;}
   .proj-nav button[data-id="about"] .t,
   .proj-nav button[data-id="about"] .tag{color:var(--ink);}
+  /* your name: site font, a little larger than the menu */
+  .proj-nav button[data-id="about"] .t{font-size:13px;line-height:1.05;}
+  .proj-nav button[data-id="about"] .tag{margin-top:3px;}
+  /* desktop: name in the middle of the menu (the order is set in the script) */
+  @media (min-width:861px){ .proj-nav{align-items:center;} .proj-nav button{order:var(--o,0);} }
   /* phone menu: name on the left, a "Projects" button on the right that opens the full list */
   .menu-toggle{display:none;}
   @media (max-width:860px){
@@ -139,18 +144,12 @@
     line-height:1.4;
     color:var(--muted);
     margin:0 0 1.4rem;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-    gap:.3rem .9rem;
   }
-  .proj-meta span{
-    flex:none;
-    text-align:left;
-    white-space:nowrap;
-  }
-  /* on phones, spread the tags edge to edge like a justified block */
-  @media (max-width:860px){ .proj-meta{justify-content:space-between;} }
+  /* tags split by thin lines; the line at the start of each row is tucked out of view */
+  .proj-meta{line-height:1.7;overflow:hidden;}
+  .proj-meta .in{display:flex;flex-wrap:wrap;margin-left:calc(-1.2em - 1px);}
+  .proj-meta .in span{white-space:nowrap;}
+  .proj-meta .sep{display:inline-block;width:1px;height:.85em;background:#d8d5cc;vertical-align:-1px;margin:0 .6em;}
 
   .proj-divider{
     border:none;
@@ -347,6 +346,12 @@
   .stk-row.is-first.is-collapsed .stk-head{border-top:none;color:var(--ink);}
   .right-col .img-row{margin-bottom:8px;}
   .left-col.is-static .stk-row{position:static;height:auto !important;margin-top:0 !important;}
+  /* desktop: horizontal lines in the left column run all the way to the vertical line (like the about page) */
+  @media (min-width:861px){
+    .left-col .row-item, .left-col .stk-full, .left-col .stk-head{
+      border-image:linear-gradient(var(--line), var(--line)) 1 / 1 0 0 0 / 0 1.25rem 0 0;
+    }
+  }
   @media (max-width:860px){
     .proj-layout{grid-template-columns:1fr;gap:1rem;}
     .left-col{border-right:none;padding-right:0;}
@@ -483,7 +488,7 @@
     {
       id: "about",
       title: "Yam Cohen",
-      tag: "about"
+      tag: "visual designer"
     },
     {
       id: "papaya",
@@ -617,12 +622,20 @@
     if (p.tag){
       var tag = document.createElement('span');
       tag.className = 'tag';
-      tag.textContent = p.id === 'about' ? p.tag : ' [ ' + p.tag + ' ]';
+      tag.textContent = ' [ ' + p.tag + ' ]';
       btn.appendChild(tag);
     }
     btn.addEventListener('click', function(){ setMenu(false); render(p.id); });
     nav.appendChild(btn);
   });
+
+  /* desktop: name in the middle, with half the projects on each side */
+  (function(){
+    var btns = Array.prototype.slice.call(nav.children);
+    var projs = btns.filter(function(b){ return b.dataset.id !== 'about'; });
+    projs.forEach(function(b, k){ b.style.setProperty('--o', k * 2); });
+    btns.forEach(function(b){ if (b.dataset.id === 'about') b.style.setProperty('--o', Math.ceil(projs.length / 2) * 2 - 1); });
+  })();
 
   /* phone menu open / close */
   var menuToggle = document.getElementById('menuToggle');
@@ -942,7 +955,7 @@
       target: -1,
       full: '<h1 class="proj-heading">' + p.heading + '</h1>' +
             (p.when ? '<div class="proj-when">' + p.when + '</div>' : '') +
-            '<div class="proj-meta">' + p.meta.split(/ · | - /).map(function(t){ return '<span>[ ' + t + ' ]</span>'; }).join('') + '</div>' +
+            '<div class="proj-meta">' + '<div class="in">' + p.meta.split(/ · | - /).map(function(t){ return '<span><i class="sep"></i>' + t + '</span>'; }).join('') + '</div>' + '</div>' +
             (lead ? textRowHtml(lead, true) : ''),
       head: p.heading
     });
