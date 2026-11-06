@@ -132,6 +132,11 @@
     letter-spacing:-.01em;
     margin:0 0 .65rem;
   }
+  /* product group headings inside a project (product name + market) */
+  .grp-head{font-size:var(--fs-m);font-weight:500;line-height:1.25;letter-spacing:-.01em;margin:.2rem 0 1rem;}
+  .grp-head .grp-sub{font-size:var(--fs-s);font-weight:400;letter-spacing:0;color:var(--ink);margin-left:.6rem;}
+  .img-block.grp-start{margin-top:6rem;}
+  @media (max-width:860px){ .img-block.grp-start{margin-top:0;} .stk-row:has(.grp-head){margin-top:3.5rem !important;} }
   .proj-when{
     font-size:var(--fs-s);
     line-height:1.4;
@@ -219,7 +224,10 @@
   #lb .lb-next{right:1rem;}
   #lb .lb-nav:hover{color:var(--accent);}
   .lp-block .zoom{width:100%;}
-  .lp-c{display:flex;flex-direction:column;gap:1rem;}
+  .lp-c{display:flex;flex-direction:column;gap:2.5rem;}
+  /* breathing room around the two landing page frames and around each screenshot inside them */
+  .lp-block{padding:2.5rem 0;}
+  .lp-scroll .zoom{padding:1.5rem 0;}
   .lp-frame{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;}
   .lp-bar{display:flex;align-items:center;gap:.35rem;padding:.4rem .6rem;border-bottom:1px solid var(--line);font-size:var(--fs-s);color:var(--muted);}
   .lp-bar i{width:7px;height:7px;border-radius:50%;background:var(--line);display:block;}
@@ -709,8 +717,8 @@
 
     if (p.id === 'about'){
       var coverOf = function(id){ var q = PROJECTS.filter(function(x){ return x.id === id; })[0]; return q; };
-      var COVERS = [['edu', 'w/cover_mix.webp'], ['papaya', 'images/covers/papaya_cover.webp'], ['datwise', 'images/covers/datwise_charcoal.webp'],
-            ['whatwillbe', 'images/all/whatwillbe_00.gif'], ['perrier', 'images/covers/perrier_moments.webp'], ['typography', 'images/covers/typography_silhouette.jpg']];
+      var COVERS = [['edu', 'w/cover_slides.webp'], ['papaya', 'images/covers/papaya_cover.webp'], ['datwise', 'images/covers/datwise_charcoal.webp'],
+            ['whatwillbe', 'images/covers/whatwillbe_booklets.webp'], ['perrier', 'images/covers/perrier_moments.webp'], ['typography', 'images/covers/typography_silhouette_loop.webp']];
       COVERS = COVERS.filter(function(c){ return coverOf(c[0]); });
       var tagOf = function(id){ var q = coverOf(id); return q ? q.tag : ''; };
       var titleOf = function(id){ var q = coverOf(id); return q ? q.title : ''; };
@@ -728,7 +736,7 @@
         ['contact', contactVal]
       ];
       var helloText = "I'm Yam, a visual designer based in Tel&#8209;Aviv." +
-        "<span style=\"display:block;margin-top:.8rem\">I love color, illustration, typography and video editing. I organize my closet by color, and still get excited every time something I've designed makes its way into the world.</span>";
+        "<span style=\"display:block;margin-top:.8rem\">I love color, illustration, typography and video editing. I organize my closet by color, use AI every day, and still get excited every time something I've designed makes its way into the world.</span>";
       var rows = items.map(function(it){ return row(it[0], it[1]); }).join('');
       content.innerHTML = '<div class="about-wrap"><div class="ab-table is-tiny">' +
         row('hello', helloText, 'ab-hello') + row('selected work', workGrid) + rows + '</div></div>';
@@ -772,8 +780,8 @@
       var z = function(f){ return '<button class="zoom" data-lb="' + D + f + '.webp" data-mode="fit" data-gallery="lp-a" aria-label="Open landing page section full size"><img src="' + D + f + '.webp" alt="Landing page section"></button>'; };
       var frame = function(url, imgs){ return '<div class="lp-frame"><div class="lp-bar"><i></i><i></i><i></i><span>' + url + '</span></div><div class="lp-scroll">' + imgs.map(z).join('') + '</div></div>'; };
       return '<div class="lp-block"><div class="lp-c">' +
-        frame(LPU[0] || '', ['lp1_hero', 'lp1_calc', 'lp1_steps', 'lp1_faq']) +
-        frame(LPU[1] || '', ['lp2_hero', 'lp2_table', 'lp2_faq']) + '</div></div>';
+        frame(LPU[0] || '', ['lp1_hero', 'lp1_calc_loop', 'lp1_steps', 'lp1_faq']) +
+        frame(LPU[1] || '', ['lp2_hero', 'lp2_why', 'lp2_table']) + '</div></div>';
     }
 
     function studentTopHtml(){
@@ -961,11 +969,13 @@
     });
     rest.forEach(function(t, k){
       var target = p.pair ? p.pair[k] : k;
+      var g = p.groups && p.groups[k];
+      var gh = g ? '<h2 class="grp-head">' + g[0] + '<span class="grp-sub">' + g[1] + '</span></h2>' : '';
       var last = stkRows[stkRows.length - 1];
       if (last.target === target){
-        last.full += textRowHtml(t, false);
+        last.full += gh + textRowHtml(t, false);
       } else {
-        stkRows.push({target: target, full: textRowHtml(t, false), head: headOf(t)});
+        stkRows.push({target: target, full: gh + textRowHtml(t, false), head: headOf(t)});
       }
     });
 
@@ -976,8 +986,10 @@
     }).join('');
 
     var rightHtml = heroRow ? imgRowHtml(heroRow, !!p.hero) : '';
+    var grpStart = {};
+    if (p.groups) Object.keys(p.groups).forEach(function(k){ var tg = p.pair ? p.pair[k] : +k; if (tg > 0) grpStart[tg] = true; });
     restRows.forEach(function(r, i){
-      rightHtml += '<div class="img-block" data-i="' + i + '">' + imgRowHtml(r, false, p.captions && p.captions[i + 1]) + '</div>';
+      rightHtml += '<div class="img-block' + (grpStart[i] ? ' grp-start' : '') + '" data-i="' + i + '">' + imgRowHtml(r, false, p.captions && p.captions[i + 1]) + '</div>';
     });
 
     content.innerHTML =
@@ -1009,7 +1021,7 @@
       Array.prototype.forEach.call(inlineVids, function(v){ if (vidObs) vidObs.observe(v); else { var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } });
     }
 
-    var NEXTCOVER = {edu: 'w/cover_mix.webp', papaya: 'images/covers/papaya_cover.webp', perrier: 'images/covers/perrier_moments.webp', typography: 'images/covers/typography_silhouette.jpg', datwise: 'images/covers/datwise_charcoal.webp', whatwillbe: 'images/all/whatwillbe_00.gif'};
+    var NEXTCOVER = {edu: 'w/cover_slides.webp', papaya: 'images/covers/papaya_cover.webp', perrier: 'images/covers/perrier_moments.webp', typography: 'images/covers/typography_silhouette_loop.webp', datwise: 'images/covers/datwise_charcoal.webp', whatwillbe: 'images/covers/whatwillbe_booklets.webp'};
     var pi = PROJECTS.map(function(x){ return x.id; }).indexOf(p.id);
     var nx = PROJECTS[(pi + 1) % PROJECTS.length];
     var npEl = document.createElement('div'); npEl.className = 'next-proj';
